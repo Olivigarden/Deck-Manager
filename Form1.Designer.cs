@@ -31,13 +31,14 @@ namespace DeckManager
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newDeckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeal = new System.Windows.Forms.Button();
+            this.btnDraw = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
             this.lblRemainingCards = new System.Windows.Forms.Label();
             this.picBack = new System.Windows.Forms.PictureBox();
             this.picFront = new System.Windows.Forms.PictureBox();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblFront = new System.Windows.Forms.Label();
+            this.lblCantUndo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFront)).BeginInit();
@@ -62,14 +63,14 @@ namespace DeckManager
             // 
             // btnDeal
             // 
-            this.btnDeal.Enabled = false;
-            this.btnDeal.Location = new System.Drawing.Point(12, 27);
-            this.btnDeal.Name = "btnDeal";
-            this.btnDeal.Size = new System.Drawing.Size(98, 52);
-            this.btnDeal.TabIndex = 2;
-            this.btnDeal.Text = "Draw";
-            this.btnDeal.UseVisualStyleBackColor = true;
-            this.btnDeal.Click += new System.EventHandler(this.btnDeal_Click);
+            this.btnDraw.Enabled = false;
+            this.btnDraw.Location = new System.Drawing.Point(12, 27);
+            this.btnDraw.Name = "btnDeal";
+            this.btnDraw.Size = new System.Drawing.Size(98, 52);
+            this.btnDraw.TabIndex = 2;
+            this.btnDraw.Text = "Draw";
+            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.Click += new System.EventHandler(this.btnDeal_Click);
             // 
             // btnUndo
             // 
@@ -127,18 +128,29 @@ namespace DeckManager
             this.lblFront.TabIndex = 10;
             this.lblFront.Text = "Drawn Front:";
             // 
+            // lblCantUndo
+            // 
+            this.lblCantUndo.AutoSize = true;
+            this.lblCantUndo.Location = new System.Drawing.Point(220, 47);
+            this.lblCantUndo.Name = "lblCantUndo";
+            this.lblCantUndo.Size = new System.Drawing.Size(94, 13);
+            this.lblCantUndo.TabIndex = 11;
+            this.lblCantUndo.Text = "Can\'t undo further!";
+            this.lblCantUndo.Visible = false;
+            // 
             // DeckManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCantUndo);
             this.Controls.Add(this.lblFront);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.picFront);
             this.Controls.Add(this.picBack);
             this.Controls.Add(this.lblRemainingCards);
             this.Controls.Add(this.btnUndo);
-            this.Controls.Add(this.btnDeal);
+            this.Controls.Add(this.btnDraw);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DeckManager";
@@ -155,13 +167,14 @@ namespace DeckManager
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newDeckToolStripMenuItem;
-        private System.Windows.Forms.Button btnDeal;
+        private System.Windows.Forms.Button btnDraw;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Label lblRemainingCards;
         private System.Windows.Forms.PictureBox picBack;
         private System.Windows.Forms.PictureBox picFront;
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.Label lblFront;
+        private System.Windows.Forms.Label lblCantUndo;
     }
 }
 

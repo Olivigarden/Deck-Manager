@@ -46,7 +46,7 @@ namespace DeckManager
                         "Files need to be named like card1.jpg, card1_back.jpg, etc.", 
                         "Confirmation", 
                         MessageBoxButtons.YesNo) == DialogResult.Yes ? true : false;
-                    var folder = "M:\\Pictures\\Card Decks\\Ankh Ma'at AI";//dialog.SelectedPath;
+                    var folder = dialog.SelectedPath;
                     foreach (var filePath in Directory.GetFiles(folder))
                     {
                         if (VALID_IMAGE_FILETYPES.Contains(filePath.Split('.')[1]))
@@ -74,8 +74,7 @@ namespace DeckManager
                     }
 
                     ShuffleDeckAndDiscard();
-                    btnDeal.Enabled = true;
-                    btnUndo.Enabled = true;
+                    btnDraw.Enabled = true;
                 }
             }
         }
@@ -108,12 +107,19 @@ namespace DeckManager
 
         private void DrawCard()
         {
+
             var chosenCard = _deck.Pop();
             if (_deck.Count == 0)
             {
                 ShuffleDeckAndDiscard();
             }
             _discardPile.Push(chosenCard);
+
+            if (_discardPile.Count >= 2)
+            {
+                btnUndo.Enabled = true;
+            }
+
             if (_doubleSidedCards)
             {
                 var nextCard = _deck.Peek();
@@ -134,6 +140,11 @@ namespace DeckManager
             _deck.Push(_discardPile.Pop());
             _deck.Push(_discardPile.Pop());
             DrawCard();
+
+            if (_discardPile.Count <= 1)
+            {
+                btnUndo.Enabled = false;
+            }
         }
     }
 }
